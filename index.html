@@ -1,68 +1,4 @@
-你遇到的 Uncaught SyntaxError: Invalid or unexpected token 错误，是因为代码中仍然隐藏着非法字符，很可能是零宽空格或中文标点。这类字符肉眼看不见，但 JavaScript 解析器会报错。
 
----
-
-解决方案
-
-方法一：清空 photoData 测试
-
-先将 photoData 改为空数组，看页面是否能正常显示首页：
-
-```javascript
-const photoData = [];   // 先清空测试
-```
-
-· 如果页面能正常显示“暂无照片”，说明问题出在你填入的图片链接或标题文字上。
-· 如果仍然报错，说明问题在代码其他位置。
-
-方法二：手动重新输入（最可靠）
-
-删除原有 photoData 数组内容，手动重新输入一遍，不要复制粘贴。因为复制可能带入不可见字符。
-
-```javascript
-const photoData = [
-    {
-        url: "https://raw.githubusercontent.com/ruanfanyingyaochi/media/main/8a43c68cb817b77285713be57837da72.jpg",
-        title: "手工剪纸"
-    },
-    {
-        url: "https://raw.githubusercontent.com/ruanfanyingyaochi/media/main/e7509bbf0adf4bb3807375f304359551.jpg",
-        title: "手工陶艺"
-    },
-    {
-        url: "https://raw.githubusercontent.com/ruanfanyingyaochi/media/main/20a3612fba0285cfe2db4e2309ef6894.jpg",
-        title: "手工剪纸"
-    },
-    {
-        url: "https://raw.githubusercontent.com/ruanfanyingyaochi/media/main/d7348fcf250cb649f1cefbedfdcd5524.jpg",
-        title: "手工剪纸"
-    }
-];
-```
-
-输入时注意：
-
-· 所有引号都是英文双引号 "。
-· 冒号、逗号都是英文符号。
-· 每个对象之间用逗号分隔，最后一个对象后不要有多余逗号（但现代浏览器允许，安全起见可去掉）。
-
-方法三：使用文本编辑器检查不可见字符
-
-如果你使用 VS Code，可以：
-
-1. 打开文件。
-2. 点击右下角的 UTF-8，选择 “通过编码重新打开” → “UTF-8 with BOM”，有时 BOM 头会导致问题。保存后再改回 UTF-8 without BOM。
-3. 安装插件 “Show Hidden Characters”，开启显示零宽空格等。
-
-如果使用 Notepad++，可以点击 视图 → 显示符号 → 显示所有字符，查看是否有红色的异常符号。
-
----
-
-如果还不行，直接使用我提供的完整代码（已清理）
-
-我已经将你代码中可能含有非法字符的部分完全重写，确保所有符号都是标准 ASCII。请直接复制以下完整代码，覆盖你的文件：
-
-```html
 <!DOCTYPE html>
 <html>
 <head>
@@ -364,3 +300,4 @@ const photoData = [
 请直接复制以上全部代码，保存为 .html 文件，然后重新上传到 GitHub 仓库。这个版本我手动输入了所有标点，确保没有非法字符。
 
 如果仍然报错，请打开浏览器的开发者工具（F12），点击 Console，截图给我看具体错误信息，包括行号。我会帮你精确定位。
+
